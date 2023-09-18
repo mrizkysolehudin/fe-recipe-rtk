@@ -1,0 +1,109 @@
+#page-editRecipe form input,
+#page-editRecipe form textarea,
+#page-editRecipe form #bg-wrapper-add-photo {
+	background-color: #f6f5f4;
+}
+
+#page-editRecipe #btn-post {
+	font-size: 16px;
+}
+
+#page-editRecipe form #image,
+#page-editRecipe form #bg-wrapper-add-photo {
+	height: 24dvw;
+	font-size: 12px;
+}
+#page-editRecipe form #icon-gallery {
+	width: 6dvw;
+	margin-top: 4dvw;
+}
+#page-editRecipe form #title {
+	height: 8dvw;
+	font-size: 12px;
+}
+#page-editRecipe form #ingredients {
+	height: 19dvw;
+	font-size: 12px;
+}
+#page-editRecipe form #video {
+	height: 8dvw;
+	font-size: 12px;
+}
+#page-editRecipe form #btn-post {
+	font-size: 7px;
+	height: 7dvw;
+}
+
+@media only screen and (min-width: 375px) {
+	#page-editRecipe form #btn-post {
+		font-size: 9px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#page-editRecipe form #image,
+	#page-editRecipe form #bg-wrapper-add-photo {
+		height: 24dvw;
+	}
+	#page-editRecipe form #icon-gallery {
+		width: 3dvw;
+		margin-top: 0dvw;
+	}
+	#page-editRecipe form #title {
+		height: 5dvw;
+	}
+	#page-editRecipe form #ingredients {
+		height: 19dvw;
+	}
+	#page-editRecipe form #video {
+		height: 5dvw;
+	}
+	#page-editRecipe form #btn-post {
+		font-size: 7px;
+		height: 3dvw;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	#page-editRecipe form #image,
+	#page-editRecipe form #bg-wrapper-add-photo {
+		font-size: 18px;
+	}
+	#page-editRecipe form #title {
+		font-size: 18px;
+	}
+	#page-editRecipe form #ingredients {
+		font-size: 18px;
+	}
+	#page-editRecipe form #video {
+		font-size: 18px;
+	}
+	#page-editRecipe form #btn-post {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	#page-editRecipe #btn-post {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	#page-editRecipe form #image,
+	#page-editRecipe form #bg-wrapper-add-photo {
+		font-size: 24px;
+	}
+	#page-editRecipe form #title {
+		font-size: 24px;
+	}
+	#page-editRecipe form #ingredients {
+		font-size: 24px;
+	}
+	#page-editRecipe form #video {
+		font-size: 24px;
+	}
+	#page-editRecipe form #btn-post {
+		font-size: 16px;
+	}
+}

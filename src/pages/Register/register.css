@@ -1,0 +1,108 @@
+#page-register {
+	margin-bottom: 50px;
+	margin-top: -30px;
+}
+
+#page-register #content-left {
+	display: none;
+}
+
+#page-register .bg-image-content-left {
+	display: block;
+	width: 50vw;
+	height: 100%;
+	z-index: -1;
+	position: absolute;
+}
+
+#page-register .bg-left {
+	background-color: #efc81a;
+	height: 100%;
+	width: 50vw;
+	opacity: 0.7;
+	position: absolute;
+}
+
+/* logo */
+#page-register .img-logo {
+	width: 182px;
+	height: 224px;
+	position: absolute;
+	top: 45%;
+	left: 22vw;
+}
+
+#page-register .bg-image-content-left {
+	width: 50vw;
+	height: 100%;
+	z-index: -1;
+	position: absolute;
+}
+
+#page-register .bg-left {
+	background-color: #efc81a;
+	height: 100%;
+	width: 50vw;
+	opacity: 0.7;
+	position: absolute;
+}
+
+/* logo */
+#page-register .img-logo {
+	width: 182px;
+	height: 224px;
+	position: absolute;
+	top: 45%;
+	left: 22vw;
+}
+
+#page-register #content-right {
+	margin-top: 80px;
+}
+
+#page-register form .width-form {
+	width: 80vw;
+}
+
+@media only screen and (min-width: 768px) {
+	#page-register form .width-form {
+		width: 60vw;
+	}
+}
+
+/* @media only screen and (min-width: 1024px) {
+	#page-register {
+		min-width: 1024px;
+	}
+
+	#content-left {
+		display: block;
+	}
+} */
+
+@media only screen and (min-width: 1280px) {
+	#page-register {
+		min-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	#page-register {
+		min-width: 1440px;
+		height: 1587px;
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	#page-register #content-left {
+		display: block;
+	}
+
+	#page-register form .width-form {
+		width: 426px;
+	}
+
+	#page-register #content-right {
+		margin-top: 293px;
+	}
+}

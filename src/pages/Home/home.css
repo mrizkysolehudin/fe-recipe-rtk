@@ -1,0 +1,108 @@
+#page-home main h1 {
+	font-size: 9vw;
+}
+#page-home main h2 {
+	font-size: 6dvw;
+}
+
+#page-home h2::before {
+	content: "";
+	position: absolute;
+	bottom: -1.2dvw;
+	left: 0;
+	width: 17%;
+	height: 1.5px;
+	background-color: black;
+	transform: translateY(-50%);
+}
+#page-home main h3 {
+	font-size: 7dvw;
+}
+#page-home #discover {
+	width: 95%;
+}
+#page-home #wrapper-img-discover,
+#page-home #wrapper-img-popular-for-you,
+#page-home #wrapper-img-new-recipe {
+	width: 85%;
+}
+#page-home #img-discover {
+	width: 80%;
+}
+
+#page-home main p {
+	font-size: 3dvw;
+	margin-top: 3dvw;
+}
+#page-home main .btn-learn-more {
+	font-size: 7px;
+	width: 25vw;
+	margin-top: 1dvw;
+}
+
+#page-home main #popular-recipe p {
+	font-size: 4dvw;
+	font-weight: 500;
+	bottom: 0.3dvw;
+	left: 6dvw;
+	color: #3f3a3a;
+}
+#page-home main #popular-recipe img {
+	width: 90%;
+	/* width: 100%; */
+}
+
+@media only screen and (min-width: 425px) {
+}
+
+@media only screen and (min-width: 768px) {
+	#page-home main h1 {
+		font-size: 3.6vw;
+	}
+	#page-home main h2 {
+		font-size: 2.8dvw;
+	}
+	#page-home main h3 {
+		font-size: 2.4dvw;
+	}
+	#page-home #discover {
+		width: 100%;
+	}
+	#page-home #wrapper-img-discover,
+	#page-home #wrapper-img-popular-for-you,
+	#page-home #wrapper-img-new-recipe {
+		width: 50%;
+	}
+	#page-home #img-discover {
+		width: 38dvw;
+	}
+	#page-home main p {
+		font-size: 1.2dvw;
+		margin-top: 3dvw;
+	}
+	#page-home main .btn-learn-more {
+		font-size: 0.8vw;
+		width: 10vw;
+		margin-top: 1dvw;
+	}
+
+	#page-home main #popular-recipe p {
+		font-size: 2.5dvw;
+		left: 4dvw;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+}
+@media only screen and (min-width: 1280px) {
+	#page-home main #popular-recipe p {
+		font-size: 1.6dvw;
+		left: 2.9dvw;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+}
+
+@media only screen and (min-width: 1720px) {
+}

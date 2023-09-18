@@ -1,0 +1,109 @@
+#page-editUser form input,
+#page-editUser form textarea,
+#page-editUser form #bg-wrapper-add-photo {
+	background-color: #f6f5f4;
+}
+
+#page-editUser #btn-post {
+	font-size: 16px;
+}
+
+#page-editUser form #image,
+#page-editUser form #bg-wrapper-add-photo {
+	height: 24dvw;
+	font-size: 12px;
+}
+#page-editUser form #icon-gallery {
+	width: 6dvw;
+	margin-top: 4dvw;
+}
+#page-editUser form #title {
+	height: 8dvw;
+	font-size: 12px;
+}
+#page-editUser form #ingredients {
+	height: 19dvw;
+	font-size: 12px;
+}
+#page-editUser form #video {
+	height: 8dvw;
+	font-size: 12px;
+}
+#page-editUser form #btn-post {
+	font-size: 7px;
+	height: 7dvw;
+}
+
+@media only screen and (min-width: 375px) {
+	#page-editUser form #btn-post {
+		font-size: 9px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#page-editUser form #image,
+	#page-editUser form #bg-wrapper-add-photo {
+		height: 24dvw;
+	}
+	#page-editUser form #icon-gallery {
+		width: 3dvw;
+		margin-top: 0dvw;
+	}
+	#page-editUser form #title {
+		height: 5dvw;
+	}
+	#page-editUser form #ingredients {
+		height: 19dvw;
+	}
+	#page-editUser form #video {
+		height: 5dvw;
+	}
+	#page-editUser form #btn-post {
+		font-size: 7px;
+		height: 3dvw;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	#page-editUser form #image,
+	#page-editUser form #bg-wrapper-add-photo {
+		font-size: 18px;
+	}
+	#page-editUser form #title {
+		font-size: 18px;
+	}
+	#page-editUser form #ingredients {
+		font-size: 18px;
+	}
+	#page-editUser form #video {
+		font-size: 18px;
+	}
+	#page-editUser form #btn-post {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	#page-editUser #btn-post {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	#page-editUser form #image,
+	#page-editUser form #bg-wrapper-add-photo {
+		font-size: 24px;
+	}
+	#page-editUser form #title {
+		font-size: 24px;
+	}
+	#page-editUser form #ingredients {
+		font-size: 24px;
+	}
+	#page-editUser form #video {
+		font-size: 24px;
+	}
+	#page-editUser form #btn-post {
+		font-size: 16px;
+	}
+}

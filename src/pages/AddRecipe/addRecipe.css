@@ -1,0 +1,109 @@
+#page-addRecipe form input,
+#page-addRecipe form textarea,
+#page-addRecipe form #bg-wrapper-add-photo {
+	background-color: #f6f5f4;
+}
+
+#page-addRecipe #btn-post {
+	font-size: 16px;
+}
+
+#page-addRecipe form #image,
+#page-addRecipe form #bg-wrapper-add-photo {
+	height: 24dvw;
+	font-size: 12px;
+}
+#page-addRecipe form #icon-gallery {
+	width: 6dvw;
+	margin-top: 4dvw;
+}
+#page-addRecipe form #title {
+	height: 8dvw;
+	font-size: 12px;
+}
+#page-addRecipe form #ingredients {
+	height: 19dvw;
+	font-size: 12px;
+}
+#page-addRecipe form #video {
+	height: 8dvw;
+	font-size: 12px;
+}
+#page-addRecipe form #btn-post {
+	font-size: 7px;
+	height: 7dvw;
+}
+
+@media only screen and (min-width: 375px) {
+	#page-addRecipe form #btn-post {
+		font-size: 9px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#page-addRecipe form #image,
+	#page-addRecipe form #bg-wrapper-add-photo {
+		height: 24dvw;
+	}
+	#page-addRecipe form #icon-gallery {
+		width: 3dvw;
+		margin-top: 0dvw;
+	}
+	#page-addRecipe form #title {
+		height: 5dvw;
+	}
+	#page-addRecipe form #ingredients {
+		height: 19dvw;
+	}
+	#page-addRecipe form #video {
+		height: 5dvw;
+	}
+	#page-addRecipe form #btn-post {
+		font-size: 7px;
+		height: 3dvw;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	#page-addRecipe form #image,
+	#page-addRecipe form #bg-wrapper-add-photo {
+		font-size: 18px;
+	}
+	#page-addRecipe form #title {
+		font-size: 18px;
+	}
+	#page-addRecipe form #ingredients {
+		font-size: 18px;
+	}
+	#page-addRecipe form #video {
+		font-size: 18px;
+	}
+	#page-addRecipe form #btn-post {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	#page-addRecipe #btn-post {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	#page-addRecipe form #image,
+	#page-addRecipe form #bg-wrapper-add-photo {
+		font-size: 24px;
+	}
+	#page-addRecipe form #title {
+		font-size: 24px;
+	}
+	#page-addRecipe form #ingredients {
+		font-size: 24px;
+	}
+	#page-addRecipe form #video {
+		font-size: 24px;
+	}
+	#page-addRecipe form #btn-post {
+		font-size: 16px;
+	}
+}

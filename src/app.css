@@ -1,0 +1,156 @@
+:root {
+	.text-yellow {
+		color: #efc81a;
+	}
+
+	.bg-yellow {
+		background-color: #efc81a;
+	}
+
+	.btn-warning {
+		background-color: #efc81a;
+	}
+
+	.text-gray {
+		color: #8692a6;
+	}
+
+	.text-lightgray {
+		color: #999999;
+	}
+
+	.text-primary {
+		color: #494949;
+	}
+}
+
+a,
+header a,
+footer a,
+main a {
+	text-decoration: none;
+	color: black;
+}
+
+.nav-link {
+	color: #666;
+}
+
+.nav-link.active {
+	color: black;
+}
+
+.nav-link:focus {
+	color: black;
+}
+
+body {
+	font-family: "Airbnb Cereal App";
+}
+
+#all-header button {
+	font-size: 3dvw;
+	font-weight: 700;
+}
+#all-header a {
+	color: #2e266f;
+	font-size: 3dvw;
+}
+
+#all-header #btn-login img {
+	width: 6dvw;
+}
+#all-header #btn-login p {
+	font-size: 3dvw;
+}
+
+footer {
+	height: 45vh;
+}
+
+footer h1 {
+	color: #2e266f;
+	font-weight: 400;
+	font-size: 28px;
+	margin-top: 15vw;
+}
+
+footer h5 {
+	color: #707070;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+footer a {
+	font-family: "Poppins", sans-serif;
+	color: #707070;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 10px;
+	margin-bottom: 8vw;
+}
+
+@media only screen and (min-width: 768px) {
+	#all-header a,
+	#all-header button {
+		font-size: 2dvw;
+	}
+	#all-header #btn-login img {
+		width: 4dvw;
+	}
+	#all-header #btn-login p {
+		font-size: 2dvw;
+	}
+	footer {
+		height: 55vh;
+	}
+
+	footer h1 {
+		font-size: 48px;
+		margin-top: 10vw;
+	}
+
+	footer h5 {
+		font-size: 16px;
+	}
+
+	footer a {
+		font-size: 12px;
+		margin-bottom: 4vw;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	#all-header a,
+	#all-header button {
+		font-size: 0.9dvw;
+	}
+	#all-header #btn-login img {
+		width: 2.4dvw;
+	}
+	#all-header #btn-login p {
+		font-size: 0.8dvw;
+	}
+	footer {
+		height: 55vh;
+	}
+
+	footer h1 {
+		margin-top: 7vw;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	footer h1 {
+		font-size: 72px;
+		margin-top: 9vw;
+	}
+
+	footer h5 {
+		font-size: 24px;
+	}
+
+	footer a {
+		font-size: 16px;
+	}
+}

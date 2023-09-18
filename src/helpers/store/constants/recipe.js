@@ -1,0 +1,10 @@
+export const FETCH_RECIPE_DETAILS_REQUEST =
+	"redux/recipe/FETCH_RECIPE_DETAILS_REQUEST";
+export const FETCH_RECIPE_DETAILS_SUCCESS =
+	"redux/recipe/FETCH_RECIPE_DETAILS_SUCCESS";
+export const FETCH_RECIPE_DETAILS_FAIL =
+	"redux/recipe/FETCH_RECIPE_DETAILS_FAIL";
+
+export const EDIT_RECIPE_REQUEST = "redux/recipe/EDIT_RECIPE_REQUEST";
+export const EDIT_RECIPE_SUCCESS = "redux/recipe/EDIT_RECIPE_SUCCESS";
+export const EDIT_RECIPE_FAIL = "redux/recipe/EDIT_RECIPE_FAIL";
