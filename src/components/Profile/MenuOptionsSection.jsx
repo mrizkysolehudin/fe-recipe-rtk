@@ -1,45 +1,16 @@
 import React from "react";
 import NoResult from "../Global/NoResult";
 import CardRecipe from "./CardRecipe";
-import http from "../../helpers/http";
-import Swal from "sweetalert2";
-import { baseUrl } from "../../helpers/baseUrl";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteRecipeAction } from "../../redux/reducers/recipeSlice";
 
 const MenuOptionsSection = ({ openTab, setOpenTab, dataRecipes }) => {
 	const likedRecipe = 0;
 	const savedRecipe = 0;
-	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleDelete = async (id) => {
-		try {
-			const token = localStorage.getItem("token");
-			http(token)
-				.delete(`${baseUrl}/recipe/${id}`)
-				.then(() => {
-					Swal.fire({
-						title: "Delete recipe success",
-						text: "Congratulations!",
-						icon: "success",
-					});
-
-					navigate("/myprofile");
-
-					setTimeout(() => {
-						window.location.reload();
-					}, 1000);
-				});
-		} catch (error) {
-			Swal.fire({
-				title: "Delete recipe fail",
-				text: "Please try again later...",
-				icon: "error",
-			});
-
-			setTimeout(() => {
-				window.location.reload();
-			}, 1000);
-		}
+		dispatch(deleteRecipeAction(id));
 	};
 
 	return (
