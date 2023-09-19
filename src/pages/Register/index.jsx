@@ -90,7 +90,7 @@ const RegisterPage = () => {
 	return (
 		<div
 			id="page-register"
-			class="ms-4 ms-sm-0"
+			className="ms-4 ms-sm-0"
 			style={{ width: "100dvw", position: "relative" }}>
 			<main className="row" style={{ width: "100%", height: "100%" }}>
 				<section

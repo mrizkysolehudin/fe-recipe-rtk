@@ -6,35 +6,24 @@ import NewRecipeSection from "../../components/Home/NewRecipeSection";
 import PopularRecipeSection from "../../components/Home/PopularRecipeSection";
 import Navbar from "../../components/Global/Navbar";
 import Footer from "../../components/Global/Footer";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRecipesAction } from "../../redux/reducers/recipeSlice";
 
 const HomePage = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const {
+		data: dataRecipe,
+		isLoading,
+		isError,
+	} = useSelector((state) => state.recipe);
 
-	const [dataRecipe, setDataRecipe] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
 	const [searchTerm, setSearchTerm] = useState([]);
 
-	const getDataRecipe = async (search) => {
-		setIsLoading(true);
-
-		try {
-			const result = await http().get(`${baseUrl}/recipe?${search}`);
-
-			setDataRecipe(result.data.data);
-			setIsLoading(false);
-		} catch (error) {
-			setIsError(true);
-			setIsLoading(false);
-		}
-	};
-
 	useEffect(() => {
-		getDataRecipe(searchTerm);
-	}, [searchTerm]);
+		dispatch(getAllRecipesAction(searchTerm));
+	}, [searchTerm, dispatch]);
 
 	const handleSearch = (e) => {
 		e.preventDefault();
