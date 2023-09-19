@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
 import BackToHomeButton from "../../components/Global/BackToHomeButton";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAction } from "../../redux/reducers/authSlice";
 
 const LoginPage = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { isLoading, isLogin } = useSelector((state) => state.userAuth);
 
 	const [agreeChecked, setAgreeChecked] = useState(false);
 	const [data, setData] = useState({
@@ -24,41 +25,14 @@ const LoginPage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
-		try {
-			if (data.email === "" || data.password === "") {
-				Swal.fire({
-					title: "Input error",
-					text: "Please, input your email and password!",
-					icon: "error",
-				});
-
-				return;
-			}
-
-			const response = await http().post(`${baseUrl}/users/login`, data);
-			localStorage.setItem("token", response.data.data.token);
-			localStorage.setItem("user_id", response.data.data.user_id);
-
-			Swal.fire({
-				title: "Login success",
-				text: "Congratulations! You are now logged in.",
-				icon: "success",
-			});
-
-			navigate("/");
-
-			setTimeout(() => {
-				window.location.reload();
-			}, 1000);
-		} catch (error) {
-			Swal.fire({
-				title: "Login error",
-				text: "Wrong password or email. Please try again.",
-				icon: "error",
-			});
-		}
+		dispatch(loginAction(data));
 	};
+
+	useEffect(() => {
+		if (isLogin) {
+			navigate("/");
+		}
+	}, [isLoading, isLogin, navigate]);
 
 	return (
 		<div id="page-login" style={{ width: "100dvw", position: "relative" }}>
@@ -160,7 +134,7 @@ const LoginPage = () => {
 								</label>
 							</div>
 							<button
-								disabled={!agreeChecked}
+								disabled={!agreeChecked || isLoading}
 								type="submit"
 								className="btn btn-warning text-light width-form"
 								style={{ marginTop: 39, height: 64, fontSize: 16 }}>

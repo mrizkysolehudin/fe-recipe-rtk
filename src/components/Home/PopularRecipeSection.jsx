@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getFirstThreeWords } from "../../utils/getThreeWords";
 import Alert from "../Global/Alert";
+import NoResult from "../Global/NoResult";
 
 const PopularRecipeSection = ({ dataRecipe, isLoading, isError }) => {
 	return (
@@ -26,25 +27,29 @@ const PopularRecipeSection = ({ dataRecipe, isLoading, isError }) => {
 					<Alert type="error" />
 				) : (
 					<>
-						{dataRecipe?.slice(0, 6)?.map((item, index) => (
-							<Link
-								key={index}
-								to={`/recipe/${item?.recipe_id}`}
-								className="col-xl-4 col-md-6 col-12"
-								style={{ position: "relative" }}>
-								<img
-									src={item?.image}
-									alt={item?.title}
-									style={{
-										objectFit: "contain",
-										height: "100%",
-									}}
-								/>
-								<p className="col-3 position-absolute">
-									{getFirstThreeWords(item?.title)}
-								</p>
-							</Link>
-						))}
+						{dataRecipe?.length > 0 ? (
+							dataRecipe?.slice(0, 6)?.map((item, index) => (
+								<Link
+									key={index}
+									to={`/recipe/${item?.recipe_id}`}
+									className="col-xl-4 col-md-6 col-12"
+									style={{ position: "relative" }}>
+									<img
+										src={item?.image}
+										alt={item?.title}
+										style={{
+											objectFit: "contain",
+											height: "100%",
+										}}
+									/>
+									<p className="col-3 position-absolute">
+										{getFirstThreeWords(item?.title)}
+									</p>
+								</Link>
+							))
+						) : (
+							<NoResult />
+						)}
 					</>
 				)}
 			</div>
