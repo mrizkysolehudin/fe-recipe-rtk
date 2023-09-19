@@ -4,9 +4,10 @@ import { baseUrl } from "../../helpers/baseUrl";
 import Swal from "sweetalert2";
 
 const initialState = {
+	isLogout: false,
 	isLogin: false,
-	token: null,
 	user_id: null,
+	token: null,
 };
 
 export const loginAction = createAsyncThunk(
@@ -20,7 +21,7 @@ export const loginAction = createAsyncThunk(
 					icon: "error",
 				});
 
-				return;
+				return rejectWithValue("Please, input your email and password!");
 			}
 
 			const response = await http().post(`${baseUrl}/users/login`, data);

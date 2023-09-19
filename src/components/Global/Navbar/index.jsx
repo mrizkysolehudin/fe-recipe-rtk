@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from "react-redux";
-import { logoutAction } from "../../../redux/reducers/authSlice";
 
 const Navbar = () => {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	const { token } = useSelector((state) => state?.userAuth);
-
 	const [isLogin, setIsLogin] = useState(false);
 
 	useEffect(() => {
+		const token = localStorage.getItem("token");
+
 		if (token) {
 			setIsLogin(true);
 		}
-	}, [dispatch, token]);
+	}, []);
 
 	const handleLogout = () => {
-		dispatch(logoutAction());
+		localStorage.removeItem("token");
 		Swal.fire({
 			text: "Logout success",
 			icon: "success",
