@@ -9,6 +9,7 @@ const LoginPage = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { isLoading, isLogin } = useSelector((state) => state.userAuth);
+	const token = localStorage.getItem("token");
 
 	const [agreeChecked, setAgreeChecked] = useState(false);
 	const [data, setData] = useState({
@@ -29,10 +30,10 @@ const LoginPage = () => {
 	};
 
 	useEffect(() => {
-		if (isLogin) {
+		if (token) {
 			navigate("/");
 		}
-	}, [isLoading, isLogin, navigate]);
+	}, [isLoading, isLogin, navigate, token]);
 
 	return (
 		<div id="page-login" style={{ width: "100dvw", position: "relative" }}>
