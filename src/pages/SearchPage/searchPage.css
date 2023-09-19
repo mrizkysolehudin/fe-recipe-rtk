@@ -1,6 +1,10 @@
 /* #page-home h1 {
 	font-size: 24px;
 } */
+#page-home #btn-filter img {
+	width: 5vw;
+	height: 5vw;
+}
 
 #page-home #wrapper-img-popular-for-you,
 #page-home #wrapper-img-new-recipe {
@@ -28,6 +32,11 @@
 }
 
 @media only screen and (min-width: 768px) {
+	#page-home #btn-filter img {
+		width: 2vw;
+		height: 2vw;
+	}
+
 	#page-home #wrapper-img-popular-for-you,
 	#page-home #wrapper-img-new-recipe {
 		width: 50%;

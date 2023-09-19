@@ -89,12 +89,24 @@ const SearchPage = () => {
 
 					<div className="gap-2 d-flex">
 						{sort === "ASC" ? (
-							<button className="btn btn-dark fw-bold" onClick={() => setSort("DESC")}>
-								sort
+							<button
+								id="btn-filter"
+								className="btn btn-dark fw-bold d-flex justify-content-center align-items-center"
+								onClick={() => setSort("DESC")}>
+								<img
+									src="../../assets/icons/icon-filter.svg"
+									style={{
+										transform: "rotate(180deg)",
+									}}
+									alt="icon-filter"
+								/>
 							</button>
 						) : (
-							<button className="btn btn-dark fw-bold" onClick={() => setSort("ASC")}>
-								sort
+							<button
+								id="btn-filter"
+								className="btn btn-dark fw-bold d-flex justify-content-center align-items-center"
+								onClick={() => setSort("ASC")}>
+								<img src="../../assets/icons/icon-filter.svg" alt="icon-filter" />
 							</button>
 						)}
 
