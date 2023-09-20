@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Global/Navbar";
 import Footer from "../../components/Global/Footer";
 import "./addRecipe.css";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
+import { useDispatch, useSelector } from "react-redux";
+import { addRecipeAction } from "../../redux/reducers/addRecipeSlice";
 
 const AddRecipePage = () => {
 	const navigate = useNavigate();
-	const user_id = localStorage.getItem("user_id");
-	const token = localStorage.getItem("token");
+	const dispatch = useDispatch();
+	const { isCreated, isLoading } = useSelector((state) => state.addRecipe);
 
-	const [isLoading, setIsLoading] = useState(false);
 	const [image, setImage] = useState("");
 	const [showImage, setShowImage] = useState("");
 
@@ -42,64 +40,15 @@ const AddRecipePage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
 
-		try {
-			if (
-				data.title === "" ||
-				data.ingredients === "" ||
-				data.video === "" ||
-				image === ""
-			) {
-				Swal.fire({
-					title: "Input error",
-					text: "Please, input all data",
-					icon: "error",
-				});
-
-				return;
-			}
-
-			const formData = new FormData();
-			formData.append("user_id", user_id);
-			formData.append("title", data?.title);
-			formData.append("ingredients", data?.ingredients);
-			formData.append("video", data?.video);
-			formData.append("image", image);
-
-			http(token)
-				.post(`${baseUrl}/recipe`, formData)
-				.then(() => {
-					Swal.fire({
-						title: "Add recipe success",
-						text: "Congratulations!",
-						icon: "success",
-					});
-
-					navigate("/");
-					setIsLoading(false);
-
-					setTimeout(() => {
-						window.location.reload();
-					}, 1000);
-				});
-		} catch (error) {
-			setIsLoading(false);
-
-			Swal.fire({
-				title: "Add recipe error",
-				text: "Please try again later...",
-				icon: "error",
-			});
-
-			setTimeout(() => {
-				window.location.reload();
-				setIsLoading(false);
-
-				return;
-			}, 2000);
-		}
+		dispatch(addRecipeAction({ data, image }));
 	};
+
+	useEffect(() => {
+		if (isCreated) {
+			navigate("/");
+		}
+	}, [dispatch, isCreated, navigate]);
 
 	return (
 		<div id="page-addRecipe" style={{ width: "100dvw", position: "relative" }}>

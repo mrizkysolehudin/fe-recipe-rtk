@@ -3,8 +3,6 @@ import http from "../../helpers/http";
 import { baseUrl } from "../../helpers/baseUrl";
 import Swal from "sweetalert2";
 
-export const selectToken = (state) => state.auth.token;
-
 export const getAllRecipesAction = createAsyncThunk(
 	"recipe/getAllRecipes",
 	async (search, { rejectWithValue }) => {
@@ -56,7 +54,10 @@ export const deleteRecipeAction = createAsyncThunk(
 
 const recipeSlice = createSlice({
 	name: "recipe",
-	initialState: {},
+	initialState: {
+		isLoading: false,
+		isError: false,
+	},
 	extraReducers: (builder) => {
 		builder.addCase(getAllRecipesAction.pending, (state, action) => {
 			state.isLoading = true;
