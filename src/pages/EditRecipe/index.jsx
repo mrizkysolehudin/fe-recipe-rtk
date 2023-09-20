@@ -3,42 +3,52 @@ import Navbar from "../../components/Global/Navbar";
 import Footer from "../../components/Global/Footer";
 import "./editRecipe.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRecipeDetailsAction } from "../../helpers/store/actions/recipe";
+import { editRecipeAction } from "../../redux/reducers/recipe/editRecipeSlice";
+import { getOneRecipeAction } from "../../redux/reducers/recipe/getOneRecipe";
 
 const EditRecipePage = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const currentRecipe = useSelector((state) => state.recipeDetails.data);
+	const { isLoading, isEdited } = useSelector((state) => state.editRecipe);
+	const { data: currentData } = useSelector((state) => state.getOneRecipe);
 
-	const user_id = localStorage.getItem("user_id");
-	const token = localStorage.getItem("token");
-
-	const [isLoading, setIsLoading] = useState(false);
 	const [image, setImage] = useState("");
 	const [showImage, setShowImage] = useState("");
 
 	useEffect(() => {
-		if (id) {
-			dispatch(fetchRecipeDetailsAction(id));
-		}
+		dispatch(getOneRecipeAction(id));
 	}, [id, dispatch]);
 
+	useEffect(() => {
+		if (isEdited) {
+			navigate("/myprofile");
+		}
+
+		if (currentData) {
+			setImage(currentData.image);
+			setShowImage(currentData.image);
+
+			setData({
+				title: currentData.title,
+				ingredients: currentData.ingredients,
+				video: currentData.video,
+			});
+		}
+	}, [dispatch, isEdited, navigate, currentData]);
+
 	const [data, setData] = useState({
-		title: currentRecipe?.title ?? "",
-		ingredients: currentRecipe?.ingredients ?? "",
-		video: currentRecipe?.video ?? "",
+		title: "",
+		ingredients: "",
+		video: "",
 	});
 
 	const handleChange = (e) => {
-		setData({
-			...data,
+		setData((prevData) => ({
+			...prevData,
 			[e.target.name]: e.target.value,
-		});
+		}));
 	};
 
 	const handleChangeImage = (e) => {
@@ -54,75 +64,8 @@ const EditRecipePage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
 
-		try {
-			if (
-				data.title === "" ||
-				data.ingredients === "" ||
-				data.video === "" ||
-				image === ""
-			) {
-				Swal.fire({
-					title: "Input error",
-					text: "Please, input all data",
-					icon: "error",
-				});
-
-				setIsLoading(false);
-			}
-
-			const formData = new FormData();
-			formData.append("user_id", user_id);
-			formData.append("title", data?.title);
-			formData.append("ingredients", data?.ingredients);
-			formData.append("video", data?.video);
-			formData.append("image", image);
-
-			http(token)
-				.put(`${baseUrl}/recipe/${id}`, formData)
-				.then(() => {
-					Swal.fire({
-						title: "Edit recipe success",
-						text: "Congratulations!",
-						icon: "success",
-					});
-
-					navigate("/myprofile");
-					setIsLoading(false);
-
-					// setTimeout(() => {
-					// 	window.location.reload();
-					// }, 1000);
-				})
-				.catch((error) => {
-					if (error.response && error.response.status === 413) {
-						Swal.fire({
-							title: "Input image error",
-							text: "File size should be less than 2MB",
-							icon: "error",
-						});
-
-						setIsLoading(false);
-					}
-				});
-		} catch (error) {
-			setIsLoading(false);
-
-			Swal.fire({
-				title: "Edit recipe error",
-				text: "Please try again later...",
-				icon: "error",
-			});
-
-			setIsLoading(false);
-
-			setTimeout(() => {
-				window.location.reload();
-
-				return;
-			}, 2000);
-		}
+		dispatch(editRecipeAction({ data, image, id }));
 	};
 
 	return (
@@ -164,7 +107,7 @@ const EditRecipePage = () => {
 							/>
 						) : (
 							<img
-								src={currentRecipe?.image ?? ""}
+								src={currentData?.image ?? ""}
 								alt="show"
 								style={{ zIndex: -1, objectFit: "contain" }}
 								className="position-absolute top-0 w-100 h-100 rounded-3 "

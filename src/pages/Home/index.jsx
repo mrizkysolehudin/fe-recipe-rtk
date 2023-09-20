@@ -8,7 +8,7 @@ import Navbar from "../../components/Global/Navbar";
 import Footer from "../../components/Global/Footer";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipesAction } from "../../redux/reducers/recipeSlice";
+import { getAllRecipesAction } from "../../redux/reducers/recipe/recipeSlice";
 
 const HomePage = () => {
 	const navigate = useNavigate();

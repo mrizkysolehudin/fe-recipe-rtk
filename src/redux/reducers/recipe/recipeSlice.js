@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
+import http from "../../../helpers/http";
+import { baseUrl } from "../../../helpers/baseUrl";
 import Swal from "sweetalert2";
 
 export const getAllRecipesAction = createAsyncThunk(

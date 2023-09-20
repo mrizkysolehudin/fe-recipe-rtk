@@ -4,7 +4,7 @@ import Footer from "../../components/Global/Footer";
 import "./addRecipe.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addRecipeAction } from "../../redux/reducers/addRecipeSlice";
+import { addRecipeAction } from "../../redux/reducers/recipe/addRecipeSlice";
 
 const AddRecipePage = () => {
 	const navigate = useNavigate();

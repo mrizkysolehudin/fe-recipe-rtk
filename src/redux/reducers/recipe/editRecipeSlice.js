@@ -1,19 +1,19 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
+import http from "../../../helpers/http";
+import { baseUrl } from "../../../helpers/baseUrl";
 import Swal from "sweetalert2";
 
-const resetAddRecipe = createAction("recipe/reset/addRecipe");
+const resetEditRecipe = createAction("recipe/reset/editRecipe");
 
-export const addRecipeAction = createAsyncThunk(
-	"recipe/addRecipe",
-	async ({ data, image }, { rejectWithValue, dispatch }) => {
+export const editRecipeAction = createAsyncThunk(
+	"recipe/editRecipe",
+	async ({ data, image, id }, { rejectWithValue, dispatch }) => {
 		try {
 			const user_id = localStorage.getItem("user_id");
 			const token = localStorage.getItem("token");
 			if (!token) {
 				Swal.fire({
-					title: "Add recipe fail",
+					title: "Edit recipe fail",
 					text: "Please re-login and try again later...",
 					icon: "error",
 				});
@@ -42,20 +42,30 @@ export const addRecipeAction = createAsyncThunk(
 			formData.append("video", data?.video);
 			formData.append("image", image);
 
-			const response = await http(token).post(`${baseUrl}/recipe`, formData);
+			const response = await http(token).put(`${baseUrl}/recipe/${id}`, formData);
 
-			if (response?.data?.data) {
+			if (response.data.data) {
 				Swal.fire({
-					title: "Add recipe success",
+					title: "Edit recipe success",
 					text: "Congratulations!",
 					icon: "success",
 				});
+
+				dispatch(resetEditRecipe());
+			}
+		} catch (error) {
+			if (error.response && error.response.status === 413) {
+				Swal.fire({
+					title: "Input image error",
+					text: "File size should be less than 2MB",
+					icon: "error",
+				});
+
+				return rejectWithValue("Input image recipe error");
 			}
 
-			dispatch(resetAddRecipe());
-		} catch (error) {
 			Swal.fire({
-				title: "Add recipe error",
+				title: "Edit recipe error",
 				text: "Please try again later...",
 				icon: "error",
 			});
@@ -65,33 +75,32 @@ export const addRecipeAction = createAsyncThunk(
 	},
 );
 
-const addRecipeSlice = createSlice({
-	name: "addRecipe",
+const editRecipeSlice = createSlice({
+	name: "editRecipe",
 	initialState: {
-		isCreated: false,
+		isEdited: false,
 		isLoading: false,
 		isError: false,
 	},
 	extraReducers: (builder) => {
-		// add
-		builder.addCase(addRecipeAction.pending, (state, action) => {
+		builder.addCase(editRecipeAction.pending, (state, action) => {
 			state.isLoading = true;
 		});
 
-		builder.addCase(resetAddRecipe, (state, action) => {
-			state.isCreated = true;
+		builder.addCase(resetEditRecipe, (state, action) => {
+			state.isEdited = true;
 		});
 
-		builder.addCase(addRecipeAction.fulfilled, (state, action) => {
+		builder.addCase(editRecipeAction.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.isCreated = false;
+			state.isEdited = false;
 		});
 
-		builder.addCase(addRecipeAction.rejected, (state, action) => {
+		builder.addCase(editRecipeAction.rejected, (state, action) => {
 			state.isLoading = false;
 			state.isError = action?.payload;
 		});
 	},
 });
 
-export default addRecipeSlice.reducer;
+export default editRecipeSlice.reducer;

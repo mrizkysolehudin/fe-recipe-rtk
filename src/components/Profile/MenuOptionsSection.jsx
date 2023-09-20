@@ -2,7 +2,7 @@ import React from "react";
 import NoResult from "../Global/NoResult";
 import CardRecipe from "./CardRecipe";
 import { useDispatch } from "react-redux";
-import { deleteRecipeAction } from "../../redux/reducers/recipeSlice";
+import { deleteRecipeAction } from "../../redux/reducers/recipe/recipeSlice";
 
 const MenuOptionsSection = ({ openTab, setOpenTab, dataRecipes }) => {
 	const likedRecipe = 0;
