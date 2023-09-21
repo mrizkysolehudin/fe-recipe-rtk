@@ -10,7 +10,7 @@ import PrivateRoute from "../components/Global/PrivateRoute";
 import SearchPage from "../pages/SearchPage";
 import NotFoundPage from "../pages/NotFound";
 import ProfilePage from "../pages/Profile";
-// import EditUserPage from "../pages/EditUser";
+import EditUserPage from "../pages/EditUser";
 import EditRecipePage from "../pages/EditRecipe";
 
 const Router = () => {
@@ -36,7 +36,7 @@ const Router = () => {
 					<Route path="/recipe/edit/:id" element={<EditRecipePage />} />
 
 					<Route path="/myprofile" element={<ProfilePage />} />
-					{/* <Route path="/edit/profile/:id" element={<EditUserPage />} /> */}
+					<Route path="/edit/profile/:id" element={<EditUserPage />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

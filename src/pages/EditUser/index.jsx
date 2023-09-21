@@ -3,35 +3,47 @@ import Navbar from "../../components/Global/Navbar";
 import Footer from "../../components/Global/Footer";
 import "./editUser.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
-import { httpFormData } from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserDetailsAction } from "../../helpers/store/actions/user";
+import { getOneUserAction } from "../../redux/reducers/user/getOneUser";
+import { editUserAction } from "../../redux/reducers/user/editUserSlice";
 
 const EditUserPage = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const currentUser = useSelector((state) => state.userDetails.data);
+	const currentUser = useSelector((state) => state.getOneUser.data);
+	const { isLoading, isEdited } = useSelector((state) => state.editUser);
 
-	const token = localStorage.getItem("token");
-
-	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
 	const [image, setImage] = useState("");
 	const [showImage, setShowImage] = useState("");
 
 	useEffect(() => {
 		if (id) {
-			dispatch(fetchUserDetailsAction(id));
+			dispatch(getOneUserAction(id));
 		}
-	}, [id, dispatch]);
+
+		if (isEdited) {
+			navigate("/myprofile");
+		}
+	}, [id, dispatch, isEdited, navigate]);
+
+	useEffect(() => {
+		if (currentUser) {
+			setImage(currentUser.photo);
+			setShowImage(currentUser.photo);
+
+			setData({
+				name: currentUser.name,
+				email: currentUser.email,
+				phone: currentUser.phone,
+			});
+		}
+	}, [dispatch, currentUser]);
 
 	const [data, setData] = useState({
-		name: currentUser?.name ?? "",
-		email: currentUser?.email ?? "",
-		phone: currentUser?.phone ?? "",
+		name: "",
+		email: "",
+		phone: "",
 	});
 
 	const handleChange = (e) => {
@@ -54,66 +66,8 @@ const EditUserPage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
 
-		try {
-			if (
-				data.name === "" ||
-				data.email === "" ||
-				data.phone === "" ||
-				image === ""
-			) {
-				Swal.fire({
-					name: "Input error",
-					text: "Please, input all data",
-					icon: "error",
-				});
-
-				return;
-			}
-
-			const formData = new FormData();
-			formData.append("user_id", id);
-			formData.append("name", data?.name);
-			formData.append("email", data?.email);
-			formData.append("phone", data?.phone);
-			formData.append("photo", image);
-
-			httpFormData(token)
-				.put(`${baseUrl}/users/${id}`, formData)
-				.then(() => {
-					Swal.fire({
-						name: "Edit user success",
-						text: "Congratulations!",
-						icon: "success",
-					});
-
-					navigate("/myprofile");
-					setIsLoading(false);
-
-					setTimeout(() => {
-						window.location.reload();
-					}, 1000);
-				});
-		} catch (error) {
-			setIsLoading(false);
-			setIsError(true);
-
-			Swal.fire({
-				name: "Edit user error",
-				text: "Please try again later...",
-				icon: "error",
-			}).then(() => {
-				setIsError(false);
-			});
-
-			setTimeout(() => {
-				window.location.reload();
-				setIsLoading(false);
-
-				return;
-			}, 2000);
-		}
+		dispatch(editUserAction({ data, image, id }));
 	};
 
 	return (
@@ -191,7 +145,7 @@ const EditUserPage = () => {
 					<button
 						id="btn-post"
 						type="submit"
-						disabled={isLoading || isError}
+						disabled={isLoading}
 						className="btn btn-warning text-light fw-semibold mx-auto"
 						style={{ width: "21dvw", marginTop: "5dvw" }}>
 						Post
