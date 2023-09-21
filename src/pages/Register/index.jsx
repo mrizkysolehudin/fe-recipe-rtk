@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import http from "../../helpers/http";
-import { baseUrl } from "../../helpers/baseUrl";
+import { useDispatch, useSelector } from "react-redux";
+import { addUserAction } from "../../redux/reducers/user/addUserSlice";
+import { useEffect } from "react";
 
 const RegisterPage = () => {
 	const navigate = useNavigate();
-	const [isLoading, setIsLoading] = useState(false);
+	const dispatch = useDispatch();
+
+	const { isLoading, isCreated } = useSelector((state) => state.addUser);
 
 	const [agreeChecked, setAgreeChecked] = useState(false);
 	const [data, setData] = useState({
@@ -27,65 +29,15 @@ const RegisterPage = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
 
-		try {
-			if (data.password !== data.confirmPassword) {
-				Swal.fire({
-					title: "error",
-					text: "Password and confirm password must be correct. Please try again.",
-					icon: "error",
-				});
-				return;
-			}
-
-			if (
-				data.name === "" ||
-				data.email === "" ||
-				data.phone === "" ||
-				data.password === "" ||
-				data.confirmPassword === ""
-			) {
-				Swal.fire({
-					title: "Input error",
-					text: "Please, input all data",
-					icon: "error",
-				});
-
-				return;
-			}
-
-			http()
-				.post(`${baseUrl}/users/register`, data)
-				.then(() => {
-					Swal.fire({
-						title: "Register success",
-						text: "Congratulations!",
-						icon: "success",
-					});
-
-					navigate("/login");
-					setIsLoading(false);
-
-					setTimeout(() => {
-						window.location.reload();
-					}, 1000);
-				});
-		} catch (error) {
-			Swal.fire({
-				title: "Register error",
-				text: "Please try again...",
-				icon: "error",
-			});
-
-			setTimeout(() => {
-				window.location.reload();
-				setIsLoading(false);
-
-				return;
-			}, 2000);
-		}
+		dispatch(addUserAction({ data }));
 	};
+
+	useEffect(() => {
+		if (isCreated) {
+			navigate("/login");
+		}
+	}, [isLoading, isCreated, navigate]);
 
 	return (
 		<div
