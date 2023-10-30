@@ -70,6 +70,26 @@ Start the project
 
 ## Screenshots
 
+| Register Page                                                                                                     | Login Page                                                                                                  |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| ![Register](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/register-page.png) | ![Login](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/login-page.png) |
+
+| Landing Page                                                                                                         | Add Recipe Page                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| ![Landing Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/landing-page.png) | ![Add Recipe Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/add-recipe-page.png) |
+
+| Profile Page                                                                                                         | Edit Profile Page                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| ![Profile Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/profile-page.png) | ![Edit Profile Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/edit-profile-page.png) |
+
+| Recipe Details Page                                                                                                                | Video Details Page                                                                                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| ![Recipe Details Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/recipe-details-page.png) | ![Video Details Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/video-details-page.png) |
+
+| Search Page                                                                                                        | Edit Recipe Page                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| ![Search Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/search-page.png) | ![Edit Recipe Page](https://github.com/mrizkysolehudin/fe-recipe-rtk/blob/master/public/assets/screens/edit-recipe-page.png) |
+
 ## Author
 
 💻 [Muchammad Rizky Solehudin](https://github.com/mrizkysolehudin)
