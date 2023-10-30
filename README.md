@@ -82,4 +82,4 @@ Start the project
 
 ⚡[`Frontend Web Recipe`](https://github.com/mrizkysolehudin/fe-recipe-rtk)⚡
 
-⚡[`Live Demo Recipe`](https://master--fe-recipe-versi2.netlify.app/)⚡
+⚡[`Demo Recipe`](https://master--fe-recipe-versi2.netlify.app/)⚡
