@@ -17,23 +17,23 @@ Recipe Application, the best platform for uncovering a variety of delicious reci
 ## Package dependencies
 
 ```bash
-		"react": "^18.2.0",
-		"bootstrap": "^5.3.1",
-		"sweetalert2": "^11.7.27",
+"react": "^18.2.0",
+"bootstrap": "^5.3.1",
+"sweetalert2": "^11.7.27",
 
-        "@reduxjs/toolkit": "^1.9.5",
-        "react-redux": "^8.1.2",
-		"redux-persist": "^6.0.0",
+"@reduxjs/toolkit": "^1.9.5",
+"react-redux": "^8.1.2",
+"redux-persist": "^6.0.0",
 
-		"@testing-library/jest-dom": "^5.17.0",
-		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "^13.5.0",
-		"axios": "^1.5.0",
-		"react-dom": "^18.2.0",
-		"react-router-dom": "^6.15.0",
-		"react-scripts": "5.0.1",
- 	    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-		"web-vitals": "^2.1.4"
+"@testing-library/jest-dom": "^5.17.0",
+"@testing-library/react": "^13.4.0",
+"@testing-library/user-event": "^13.5.0",
+"axios": "^1.5.0",
+"react-dom": "^18.2.0",
+"react-router-dom": "^6.15.0",
+"react-scripts": "5.0.1",
+"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+"web-vitals": "^2.1.4"
 ```
 
 ## Environment Variables
