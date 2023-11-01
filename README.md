@@ -8,6 +8,13 @@ Recipe Application, the best platform for uncovering a variety of delicious reci
 
 <br />
 
+## Features
+
+- Users can create and share their own recipes.
+- Users can edit and delete recipes they have created.
+- Users can browse recipes created by other users.
+- Users can watch video tutorials on how to cook following a recipe.
+
 ## Built with
 
 - React JS
